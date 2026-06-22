@@ -36,10 +36,10 @@ function PriceCard({
         {corridorKey.replace("-", " to ")}
       </p>
       <p className="text-sm text-zinc-600 mt-0.5 mb-3">{label}</p>
-      <p className="text-4xl font-bold text-zinc-900">{price.toFixed(2)}</p>
+      <p className="text-4xl font-bold text-zinc-900">{(price ?? 0).toFixed(2)}</p>
       <p className="text-sm text-zinc-400">Lakhs</p>
       <p className="text-xs text-zinc-400 mt-2">
-        {range.min.toFixed(2)} - {range.max.toFixed(2)} Lakhs
+        {(range?.min ?? 0).toFixed(2)} - {(range?.max ?? 0).toFixed(2)} Lakhs
       </p>
     </div>
   );
@@ -57,13 +57,13 @@ function FactorRow({
   return (
     <div className="flex items-center text-sm">
       <span className="w-8 text-right font-mono text-xs text-zinc-500">
-        {val1.toFixed(2)}
+        {(val1 ?? 0).toFixed(2)}
       </span>
       <div className="flex-1 mx-3 flex items-center gap-1">
         <div className="flex-1 h-1.5 bg-zinc-100 rounded-full overflow-hidden flex justify-end">
           <div
             className="h-full bg-indigo-400 rounded-full"
-            style={{ width: `${Math.min(val1 * 50, 100)}%` }}
+            style={{ width: `${Math.min((val1 ?? 0) * 50, 100)}%` }}
           />
         </div>
         <span className="text-xs text-zinc-400 w-24 text-center shrink-0">
@@ -72,12 +72,12 @@ function FactorRow({
         <div className="flex-1 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
           <div
             className="h-full bg-purple-400 rounded-full"
-            style={{ width: `${Math.min(val2 * 50, 100)}%` }}
+            style={{ width: `${Math.min((val2 ?? 0) * 50, 100)}%` }}
           />
         </div>
       </div>
       <span className="w-8 text-left font-mono text-xs text-zinc-500">
-        {val2.toFixed(2)}
+        {(val2 ?? 0).toFixed(2)}
       </span>
     </div>
   );
@@ -111,7 +111,7 @@ export default function ComparisonView({ result }: Props) {
       <div className="p-5 bg-linear-to-r from-indigo-50 via-white to-purple-50 rounded-2xl border border-zinc-200 text-center">
         <p className="text-sm text-zinc-500">Price Difference</p>
         <p className="text-3xl font-bold text-zinc-900 mt-1">
-          {comparison.priceDifference.toFixed(2)}{" "}
+          {(comparison.priceDifference ?? 0).toFixed(2)}{" "}
           <span className="text-lg font-normal text-zinc-500">Lakhs</span>
         </p>
         <p className="text-sm text-zinc-400 mt-1">
@@ -135,23 +135,23 @@ export default function ComparisonView({ result }: Props) {
         <div className="p-4 bg-zinc-50 rounded-xl space-y-2">
           <FactorRow
             label="Base /sq.ft"
-            val1={c1.breakdown.basePricePerSqft / 1000}
-            val2={c2.breakdown.basePricePerSqft / 1000}
+            val1={(c1.breakdown?.basePricePerSqft ?? 0) / 1000}
+            val2={(c2.breakdown?.basePricePerSqft ?? 0) / 1000}
           />
           <FactorRow
             label="Demand"
-            val1={c1.breakdown.demandFactor}
-            val2={c2.breakdown.demandFactor}
+            val1={c1.breakdown?.demandFactor ?? 0}
+            val2={c2.breakdown?.demandFactor ?? 0}
           />
           <FactorRow
             label="Floor"
-            val1={c1.breakdown.floorPremium}
-            val2={c2.breakdown.floorPremium}
+            val1={c1.breakdown?.floorPremium ?? 0}
+            val2={c2.breakdown?.floorPremium ?? 0}
           />
           <FactorRow
             label="Furnishing"
-            val1={c1.breakdown.furnishingMultiplier}
-            val2={c2.breakdown.furnishingMultiplier}
+            val1={c1.breakdown?.furnishingMultiplier ?? 0}
+            val2={c2.breakdown?.furnishingMultiplier ?? 0}
           />
         </div>
       </div>

@@ -48,7 +48,7 @@ export default function CorridorStats() {
           <div className="grid grid-cols-3 gap-3">
             <div className="p-4 bg-indigo-50 rounded-xl text-center">
               <p className="text-2xl font-bold text-indigo-700">
-                {stats.basePricePerSqft.toLocaleString()}
+                {(stats.basePricePerSqft ?? 0).toLocaleString()}
               </p>
               <p className="text-xs text-indigo-500 mt-1">Base Price /sq.ft</p>
             </div>
@@ -89,7 +89,7 @@ export default function CorridorStats() {
                         }}
                       >
                         <span className="text-xs text-white font-semibold">
-                          {est.estimatedPrice.toFixed(1)}L
+                          {(est.estimatedPrice ?? 0).toFixed(1)}L
                         </span>
                       </div>
                     </div>

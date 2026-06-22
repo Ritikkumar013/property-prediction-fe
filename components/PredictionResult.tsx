@@ -45,11 +45,11 @@ export default function PredictionResult({ result }: Props) {
       <div className="text-center p-8 bg-linear-to-br from-indigo-50 to-purple-50 rounded-2xl border border-indigo-100">
         <p className="text-sm text-indigo-600 font-medium mb-1">{corridor}</p>
         <p className="text-5xl font-bold text-zinc-900 tracking-tight">
-          {predictedPrice.toFixed(2)}
+          {(predictedPrice ?? 0).toFixed(2)}
         </p>
         <p className="text-lg text-zinc-500 mt-1">Lakhs</p>
         <p className="text-sm text-zinc-400 mt-3">
-          Range: {priceRange.min.toFixed(2)} - {priceRange.max.toFixed(2)} Lakhs
+          Range: {(priceRange?.min ?? 0).toFixed(2)} - {(priceRange?.max ?? 0).toFixed(2)} Lakhs
         </p>
       </div>
 
@@ -59,48 +59,48 @@ export default function PredictionResult({ result }: Props) {
           <div className="flex items-center justify-between text-sm pb-2 border-b border-zinc-200">
             <span className="text-zinc-500">Base Price</span>
             <span className="font-mono font-medium text-zinc-700">
-              {breakdown.basePricePerSqft.toLocaleString()} /sq.ft x{" "}
-              {breakdown.sqft.toLocaleString()} sq.ft
+              {(breakdown?.basePricePerSqft ?? 0).toLocaleString()} /sq.ft x{" "}
+              {(breakdown?.sqft ?? 0).toLocaleString()} sq.ft
             </span>
           </div>
           <BreakdownBar
             label="BHK Factor"
-            value={breakdown.bhkMultiplier}
+            value={breakdown?.bhkMultiplier ?? 1}
             base={1}
           />
           <BreakdownBar
             label="Floor Premium"
-            value={breakdown.floorPremium}
+            value={breakdown?.floorPremium ?? 1}
             base={1}
           />
           <BreakdownBar
             label="Age Factor"
-            value={breakdown.ageFactor}
+            value={breakdown?.ageFactor ?? 1}
             base={1}
           />
           <BreakdownBar
             label="Bathroom Factor"
-            value={breakdown.bathroomFactor}
+            value={breakdown?.bathroomFactor ?? 1}
             base={1}
           />
           <BreakdownBar
             label="Furnishing"
-            value={breakdown.furnishingMultiplier}
+            value={breakdown?.furnishingMultiplier ?? 1}
             base={1}
           />
           <BreakdownBar
             label="Parking Bonus"
-            value={breakdown.parkingBonus}
+            value={breakdown?.parkingBonus ?? 1}
             base={1}
           />
           <BreakdownBar
             label="Amenities"
-            value={breakdown.amenityBonus}
+            value={breakdown?.amenityBonus ?? 1}
             base={1}
           />
           <BreakdownBar
             label="Demand Factor"
-            value={breakdown.demandFactor}
+            value={breakdown?.demandFactor ?? 1}
             base={1}
           />
         </div>
