@@ -83,7 +83,7 @@ export default function CorridorStats() {
                     </span>
                     <div className="flex-1 h-8 bg-zinc-100 rounded-lg overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-indigo-400 to-indigo-500 rounded-lg flex items-center justify-end pr-2"
+                        className="h-full bg-linear-to-r from-indigo-400 to-indigo-500 rounded-lg flex items-center justify-end pr-2"
                         style={{
                           width: `${(est.estimatedPrice / maxPrice) * 100}%`,
                         }}
